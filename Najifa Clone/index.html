@@ -961,6 +961,11 @@
     .footer-legal a { color: var(--text-muted-dark); transition: var(--transition); }
     .footer-legal a:hover { color: var(--green-primary); }
 
+    /* Footer dark-context overrides (logo text + button hover readability) */
+    .site-footer .logo-text { color: var(--text-on-dark) !important; }
+    .site-footer .btn-outline { color: var(--text-on-dark) !important; border-color: var(--text-muted-dark) !important; background: transparent !important; }
+    .site-footer .btn-outline:hover { color: var(--text-on-dark) !important; background: rgba(255, 255, 255, 0.10) !important; border-color: var(--text-on-dark) !important; transform: translateY(-2px); }
+
     @media (max-width: 1023px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
     @media (max-width: 640px)  { .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
 
