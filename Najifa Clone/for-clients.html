@@ -3,148 +3,420 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Clients — Najifa International</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <title>Your Company Name — For Clients (Employers)</title>
+  <meta name="description" content="Hire trained, vetted overseas workers through Your Company Name Here. Trusted recruitment for global employers."/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
-    /* ===== CSS VARIABLES (FROM INDEX) ===== */
+    /* ===== CSS VARIABLES ===== */
     :root {
-      --green: #1d9e75;
-      --green-dark: #157a5a;
-      --green-light: #e8f7f2;
-      --green-glow: rgba(29,158,117,0.18);
-      --dark: #0b1a14;
-      --dark2: #112318;
-      --dark3: #1a3028;
-      --text: #e8f0ec;
-      --text-muted: #8aab9a;
-      --white: #ffffff;
-      --card-bg: rgba(255,255,255,0.04);
-      --card-border: rgba(29,158,117,0.18);
-      --radius: 14px;
+      /* === BRAND GREENS (user-specified primary #285A48) === */
+      --green-primary: #285A48;
+      --green-dark:    #1B3F32;
+      --green-light:   #E5F0EB;
+      --green-bright:  #5BAA8C;   /* readable green accent on dark surfaces */
+
+      /* === SURFACES (user-specified dark #283739, off-white #EAEFEF) === */
+      --white-pure:    #FFFFFF;
+      --white-soft:    #EAEFEF;
+      --off-white:     #EAEFEF;
+      --black-main:    #283739;
+      --black-accent:  #1F2C2E;
+      --black-deeper:  #161F21;
+
+      /* === TEXT === */
+      --text-main:       #1B252A;       /* darkest for headings — max contrast */
+      --text-secondary:  #3A4D4F;       /* body text — readable dark gray on light */
+      --text-muted:      #6B7E80;       /* meta/captions — still readable */
+      --text-on-dark:    #FFFFFF;       /* pure white for max contrast on dark headings */
+      --text-soft-white: #EAEFEF;       /* user-specified white shade — used for surfaces / softer text */
+      --text-muted-dark: #A8B5B7;
+
+      /* === BORDERS === */
+      --border-light:  rgba(40, 90, 72, 0.18);
+      --border-subtle: rgba(40, 55, 57, 0.10);
+
+      /* === ELEVATION === */
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.18);
+      --shadow-md:   0 8px 32px rgba(0, 0, 0, 0.28);
+      --shadow-lg:   0 16px 48px rgba(40, 90, 72, 0.22);
+
+      /* === MOTION === */
+      --transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* === RADIUS === */
       --radius-sm: 8px;
-      --shadow: 0 8px 32px rgba(0,0,0,0.35);
-      --transition: all 0.32s cubic-bezier(0.4,0,0.2,1);
+      --radius:    14px;
+      --radius-lg: 24px;
+
+      /* === SPACING (8px base grid) === */
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  24px;
+      --space-lg:  40px;
+      --space-xl:  64px;
+      --space-2xl: 96px;
+      --space-3xl: 128px;
+
+      /* === LEGACY ALIASES — LIGHT theme (premium SaaS feel) === */
+      --green: var(--green-primary);
+      --green-glow: rgba(40, 90, 72, 0.10);
+      --dark: var(--white-soft);            /* old "dark" surfaces become soft white */
+      --dark2: var(--white-pure);
+      --dark3: var(--green-light);
+      --text: var(--text-main);
+      --white: var(--text-main);            /* legacy 'white text' rules now render as dark text on light surfaces */
+      --card-bg: var(--white-pure);
+      --card-border: var(--border-subtle);
+      --shadow: 0 8px 32px rgba(40, 55, 57, 0.08);
     }
 
-    /* ===== RESET & GLOBAL ===== */
+    /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
-      color: var(--text);
+      font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+      background: var(--white-soft);
+      color: var(--text-main);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    img, iframe, svg { max-width: 100%; display: block; }
+    button, input, textarea, select { font-family: inherit; }
 
     /* ===== SCROLLBAR ===== */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--white-soft); }
+    ::-webkit-scrollbar-thumb { background: var(--green-primary); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--green-dark); }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
 
     /* ===== UTILITY ===== */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Section header trio (light theme) */
     .section-tag {
       display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--green);
-      background: var(--green-glow);
-      border: 1px solid var(--card-border);
-      padding: 5px 14px;
+      color: var(--green-primary);
+      background: var(--green-light);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
       border-radius: 30px;
       margin-bottom: 16px;
     }
-    .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: var(--white); }
-    .section-title span { color: var(--green); }
-    .section-sub { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin-top: 12px; }
-    
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; padding: 13px 28px; border-radius: 8px; border: none; cursor: pointer; transition: var(--transition); white-space: nowrap; }
-    .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,158,117,0.35); }
-    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; padding: 13px 28px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.18); cursor: pointer; transition: var(--transition); white-space: nowrap; }
-    .btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+    .section-title {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--text-main);
+    }
+    .section-title span { color: var(--green-primary); }
+    .section-sub {
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 400;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-top: 12px;
+      max-width: 680px;
+    }
 
-    /* ===== HEADER ===== */
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 24px; transition: var(--transition); }
-    header.scrolled { background: rgba(11,26,20,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--card-border); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
-    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); }
-    .logo-icon { width: 38px; height: 38px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .logo span { color: var(--green); }
-    nav { display: flex; align-items: center; gap: 6px; }
-    .nav-item { position: relative; font-size: 14px; font-weight: 500; color: var(--text-muted); padding: 8px 14px; border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition); white-space: nowrap; }
-    .nav-item:hover { color: var(--white); background: var(--card-bg); }
-    .nav-item.has-dropdown::after { content: ' ▾'; font-size: 10px; }
-    .dropdown { display: none; position: absolute; top: calc(100% + 8px); left: 0; min-width: 220px; background: var(--dark2); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 8px; box-shadow: var(--shadow); z-index: 100; }
-    .nav-item:hover .dropdown { display: block; animation: fadeDown 0.2s ease; }
-    @keyframes fadeDown { from { opacity:0; transform:translateY(-8px);} to { opacity:1; transform:translateY(0);} }
-    .dropdown a { display: block; padding: 10px 14px; font-size: 14px; color: var(--text-muted); border-radius: var(--radius-sm); transition: var(--transition); }
-    .dropdown a:hover { color: var(--white); background: var(--green-glow); }
-    .nav-apply { background: var(--green); color: #fff !important; padding: 9px 18px; border-radius: var(--radius-sm); font-weight: 600; font-size: 14px; transition: var(--transition); margin-left: 6px; }
-    .nav-apply:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(29,158,117,0.4); }
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-primary);
+      color: var(--text-on-dark);
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(40, 90, 72, 0.25);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-main);
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-light);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      border-color: var(--green-primary);
+      color: var(--green-primary);
+      background: var(--green-light);
+    }
 
-    /* Mobile Menu */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
-    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--dark); z-index: 999; flex-direction: column; padding: 24px; overflow-y: auto; }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
-    .mobile-close { width: 40px; height: 40px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; color: var(--text); }
-    .mobile-nav-item { padding: 14px 0; border-bottom: 1px solid var(--card-border); font-size: 16px; font-weight: 500; color: var(--text); cursor: pointer; }
-    .mobile-sub { padding: 8px 16px; color: var(--text-muted); font-size: 14px; display: block; }
-    .mobile-apply-btn { margin-top: 24px; background: var(--green); color: #fff; text-align: center; padding: 15px; border-radius: var(--radius-sm); font-weight: 600; font-size: 16px; }
+    /* Cards (light theme — pure white surface, soft shadow) */
+    .card {
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+      color: var(--text-main);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green-light);
+      box-shadow: 0 16px 48px rgba(40, 90, 72, 0.10);
+    }
 
-    /* ===== PAGE HEADER ===== */
-    .page-header {
-      padding: 180px 0 100px;
+    /* Form inputs (light theme) */
+    .form-input, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], textarea, select {
+      width: 100%;
+      background: var(--white-pure);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+    .form-input:focus, input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--green-primary);
+      background: var(--white-pure);
+      box-shadow: 0 0 0 4px rgba(40, 90, 72, 0.10);
+    }
+    .form-input::placeholder, input::placeholder, textarea::placeholder { color: var(--text-muted); }
+    label { display: block; font-size: 14px; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+
+    /* Section padding rhythm */
+    section { padding: var(--space-2xl) 0; }
+    @media (max-width: 768px) { section { padding: 64px 0; } }
+
+    /* Scroll fade-up */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.6s ease-out both; }
+
+    /* ===== NAVBAR (LIGHT GLASS) ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition);
+    }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+    }
+    .logo-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--green-primary), #3a7a60);
+      box-shadow: 0 4px 14px rgba(40, 90, 72, 0.30);
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-icon svg { width: 20px; height: 20px; color: #fff; }
+    .logo-text { color: var(--text-main); white-space: nowrap; }
+
+    .main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav .nav-item {
       position: relative;
-      text-align: center;
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 50%, var(--dark3) 100%);
-      border-bottom: 1px solid var(--card-border);
-      overflow: hidden;
-    }
-    .page-header::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 50% at 50% 0%, rgba(29,158,117,0.15) 0%, transparent 80%);
-      z-index: 0;
-    }
-    .page-header .container { position: relative; z-index: 1; }
-    .breadcrumb {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 500;
-      color: var(--green);
-      margin-bottom: 16px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      animation: fadeInUp 0.6s ease both;
+      color: var(--text-main);
+      cursor: pointer;
+      padding: 8px 0;
+      transition: var(--transition);
     }
-    .breadcrumb a { color: var(--text-muted); transition: var(--transition); }
-    .breadcrumb a:hover { color: var(--white); }
-    .breadcrumb span { margin: 0 8px; color: var(--card-border); }
-    .page-title {
-      font-family: 'Syne', sans-serif;
+    .main-nav .nav-item:hover { color: var(--green-primary); }
+    .main-nav .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-primary);
+      transition: width 0.3s;
+    }
+    .main-nav .nav-item:hover::after { width: 100%; }
+    .main-nav .nav-cta::after { display: none; }
+    .main-nav .nav-cta { color: var(--text-on-dark) !important; padding: 11px 22px; font-size: 14px; }
+
+    .has-dropdown .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 230px;
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 40px rgba(40, 55, 57, 0.12);
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: var(--transition);
+    }
+    .has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .has-dropdown .dropdown a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .has-dropdown .dropdown a:hover { background: var(--green-light); color: var(--green-primary); }
+
+    .nav-toggle { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); border-radius: 2px; transition: var(--transition); }
+
+    @media (max-width: 1023px) {
+      .main-nav {
+        position: fixed;
+        inset: 72px 0 0 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 24px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: var(--transition);
+        overflow-y: auto;
+      }
+      .main-nav.open { transform: translateX(0); }
+      .nav-toggle { display: flex; }
+      .has-dropdown .dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; padding: 0 0 0 16px; border: none; background: transparent; }
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer { position: relative; background: var(--black-main); color: var(--text-muted-dark); padding: 80px 0 32px; }
+    .footer-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--green-primary), var(--green-dark)); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand .logo { display: inline-block; margin-bottom: 16px; }
+    .footer-tagline { font-size: 15px; line-height: 1.7; color: var(--text-muted-dark); margin-bottom: 20px; max-width: 360px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 40px; height: 40px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--black-accent); color: var(--text-muted-dark);
+      border-radius: 50%; transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--green-primary); color: var(--text-on-dark); transform: translateY(-2px); }
+
+    .footer-col h4 { color: var(--text-on-dark); font-size: 16px; font-weight: 700; margin-bottom: 18px; }
+    .footer-col a { display: block; color: var(--text-muted-dark); font-size: 14px; margin-bottom: 10px; transition: var(--transition); }
+    .footer-col a:hover { color: var(--green-primary); }
+    .footer-address { color: var(--text-muted-dark); font-size: 14px; line-height: 1.7; margin-top: 4px; }
+
+    .footer-bottom { padding-top: 28px; border-top: 1px solid var(--black-accent); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { color: var(--text-muted-dark); transition: var(--transition); }
+    .footer-legal a:hover { color: var(--green-primary); }
+
+    @media (max-width: 1023px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media (max-width: 640px)  { .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .float-wa {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 998;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+      cursor: pointer;
+      transition: var(--transition);
+      animation: floatPulse 3s ease-in-out infinite;
+    }
+    .float-wa:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
+    @keyframes floatPulse {
+      0%,100% { box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 8px 32px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); }
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+
+    /* Generic heading + paragraph rescue for light surfaces */
+    section h1, section h2, section h3, section h4 { color: var(--text-main); }
+    section p { color: var(--text-secondary); }
+
+    /* Footer is dark — re-anchor inverse text colors there */
+    .site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4 { color: var(--text-on-dark); }
+    .site-footer p { color: var(--text-muted-dark); }
+
+    /* ===== PAGE BANNER ===== */
+    .page-banner, .page-header, .page-hero {
+      background: var(--white-soft);
+      padding: 80px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .page-banner h1, .page-hero h1, .page-header h1 {
+      font-family: 'Open Sans', sans-serif;
       font-weight: 800;
-      font-size: clamp(32px, 5vw, 52px);
-      color: var(--white);
-      margin-bottom: 16px;
-      animation: fadeInUp 0.6s 0.1s ease both;
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--text-main);
+      line-height: 1.1;
     }
-    .page-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 500px;
-      margin: 0 auto;
-      animation: fadeInUp 0.6s 0.2s ease both;
-    }
+    .page-banner h1 span, .page-hero h1 span, .page-header h1 span { color: var(--green-primary); }
+    .page-banner p, .page-hero p, .page-header p { color: var(--text-secondary); margin-top: 12px; max-width: 680px; margin-left: auto; margin-right: auto; }
 
     /* ===== CLIENT PROCESS SECTION ===== */
-    #client-process { padding: 96px 0; }
+    #client-process { padding: 96px 0; background: var(--white-pure); }
     .process-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -152,43 +424,44 @@
       margin-top: 48px;
     }
     .process-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius);
       padding: 32px 24px;
       position: relative;
       transition: var(--transition);
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow-soft);
     }
-    .process-card:hover { border-color: var(--green); background: var(--dark3); transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.3); }
-    
+    .process-card:hover { border-color: var(--green-light); background: var(--white-pure); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(40, 90, 72, 0.10); }
+
     /* Making some cards span columns for the 7 steps to fit nicely */
     .process-card.col-span-2 { grid-column: span 2; }
-    
+
     .pc-num {
       width: 40px; height: 40px;
-      background: var(--dark2);
-      border: 1px solid var(--green);
-      color: var(--green);
+      background: var(--green-light);
+      border: 1px solid var(--border-light);
+      color: var(--green-primary);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-weight: 800;
       font-size: 16px;
       margin-bottom: 20px;
       transition: var(--transition);
     }
-    .process-card:hover .pc-num { background: var(--green); color: #fff; }
-    .pc-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); margin-bottom: 12px; }
-    .pc-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .process-card:hover .pc-num { background: var(--green-primary); color: var(--text-on-dark); border-color: var(--green-primary); }
+    .pc-title { font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 18px; color: var(--text-main); margin-bottom: 12px; }
+    .pc-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
     /* ===== WHY HIRE FROM US ===== */
     #why-hire {
       padding: 96px 0;
-      background: linear-gradient(135deg, var(--dark2), var(--dark3));
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
+      background: var(--white-soft);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
     }
     .wh-grid {
       display: grid;
@@ -197,30 +470,32 @@
       margin-top: 48px;
     }
     .wh-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius);
       padding: 28px;
       display: flex;
       align-items: flex-start;
       gap: 20px;
       transition: var(--transition);
+      box-shadow: var(--shadow-soft);
     }
-    .wh-item:hover { transform: translateX(8px); border-color: var(--green); }
+    .wh-item:hover { transform: translateX(8px); border-color: var(--green-light); box-shadow: 0 16px 48px rgba(40, 90, 72, 0.10); }
     .wh-icon {
       width: 48px; height: 48px;
-      background: var(--green-glow);
-      color: var(--green);
+      background: var(--green-light);
+      color: var(--green-primary);
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-size: 20px;
       flex-shrink: 0;
+      border: 1px solid var(--border-light);
     }
-    .wh-text h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); margin-bottom: 8px; }
-    .wh-text p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .wh-text h4 { font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 18px; color: var(--text-main); margin-bottom: 8px; }
+    .wh-text p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
     /* ===== CLIENTS MARQUEE ===== */
-    #clients-marquee { padding: 96px 0; overflow: hidden; text-align: center; }
+    #clients-marquee { padding: 96px 0; overflow: hidden; text-align: center; background: var(--white-pure); }
     .marquee-track {
       display: flex;
       gap: 32px;
@@ -232,8 +507,8 @@
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .client-logo-item {
       flex-shrink: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       padding: 14px 28px;
       display: flex; align-items: center; justify-content: center;
@@ -243,181 +518,159 @@
       color: var(--text-muted);
       transition: var(--transition);
       white-space: nowrap;
+      box-shadow: var(--shadow-soft);
     }
-    .client-logo-item:hover { border-color: var(--green); color: var(--white); }
+    .client-logo-item:hover { border-color: var(--green-primary); color: var(--green-primary); background: var(--green-light); }
 
     /* ===== EMPLOYER CTA ===== */
-    #employer-cta { padding: 96px 0; text-align: center; background: var(--dark2); border-top: 1px solid var(--card-border); }
-    #employer-cta h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(30px, 4.5vw, 52px); color: var(--white); margin-bottom: 14px; }
-    #employer-cta h2 span { color: var(--green); }
-    #employer-cta p { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    #employer-cta {
+      padding: 96px 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+    #employer-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(91, 170, 140, 0.25), transparent 60%);
+      pointer-events: none;
+    }
+    #employer-cta .container { position: relative; z-index: 1; }
+    #employer-cta h2 { font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: clamp(30px, 4.5vw, 52px); color: var(--text-on-dark); margin-bottom: 14px; }
+    #employer-cta h2 span { color: var(--green-light); }
+    #employer-cta p { font-size: 16px; color: rgba(255,255,255,0.88); margin-bottom: 36px; max-width: 600px; margin-left: auto; margin-right: auto; }
     .employer-cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-
-    /* ===== FOOTER ===== */
-    footer { background: var(--dark); border-top: 1px solid var(--card-border); padding: 60px 0 0; }
-    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--card-border); }
-    .footer-logo { display: flex; align-items: center; gap: 10px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--white); margin-bottom: 12px; }
-    .footer-logo-icon { width: 34px; height: 34px; background: var(--green); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
-    .footer-tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-    .footer-newsletter { display: flex; gap: 8px; margin-bottom: 24px; }
-    .footer-newsletter input { flex: 1; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; transition: var(--transition); }
-    .footer-newsletter button { background: var(--green); color: #fff; border: none; border-radius: var(--radius-sm); padding: 10px 16px; cursor: pointer; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: var(--transition); }
-    .footer-socials { display: flex; gap: 8px; }
-    .footer-social { width: 36px; height: 36px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; transition: var(--transition); color: var(--text-muted); }
-    .footer-social:hover { background: var(--green); border-color: var(--green); color: #fff; }
-    .footer-col h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 18px; letter-spacing: 0.5px; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a { font-size: 13px; color: var(--text-muted); transition: var(--transition); }
-    .footer-col ul li a:hover { color: var(--green); padding-left: 4px; }
-    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; color: var(--text-muted); }
-    .footer-contact-item .fc-icon { flex-shrink: 0; margin-top: 2px; color: var(--green); font-size: 15px; }
-    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; gap: 8px; }
-
-    /* ===== FLOATING WHATSAPP ===== */
-    .float-wa { position: fixed; bottom: 28px; right: 28px; z-index: 998; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 8px 24px rgba(37,211,102,0.4); cursor: pointer; transition: var(--transition); animation: floatPulse 3s ease-in-out infinite; }
-    .float-wa:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
-    @keyframes floatPulse { 0%,100% { box-shadow: 0 8px 24px rgba(37,211,102,0.4); } 50% { box-shadow: 0 8px 32px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); } }
-
-    /* Animation Keyframes */
-    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
+    #employer-cta .btn-primary { background: var(--text-on-dark); color: var(--green-primary); }
+    #employer-cta .btn-primary:hover { background: var(--white-soft); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(40, 55, 57, 0.20); }
+    #employer-cta .btn-outline { color: var(--text-on-dark); border-color: rgba(255,255,255,0.5); }
+    #employer-cta .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--text-on-dark); color: var(--text-on-dark); }
 
     /* Responsive */
     @media (max-width: 1024px) {
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .process-card.col-span-2 { grid-column: span 1; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      nav { display: none; }
-      .hamburger { display: flex; }
-      .footer-top { grid-template-columns: 1fr; }
+      .wh-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .process-grid { grid-template-columns: 1fr; }
-      .wh-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<a href="https://wa.me/8801798682867" target="_blank" class="float-wa" aria-label="WhatsApp"><span>💬</span></a>
+<!-- ===== FLOATING WHATSAPP ===== -->
+<a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="float-wa" aria-label="WhatsApp"><span>💬</span></a>
 
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-header">
-    <div class="logo"><div class="logo-icon">🌍</div><span>Najifa <span>Int'l</span></span></div>
-    <div class="mobile-close" onclick="closeMobileMenu()">✕</div>
-  </div>
-  <div class="mobile-nav-item">Company
-    <div style="margin-top:8px;">
-      <a href="about.html" class="mobile-sub">About Us</a>
-      <a href="management.html" class="mobile-sub">Management</a>
-      <a href="ceo-message.html" class="mobile-sub">Message from CEO</a>
-      <a href="mission-vision.html" class="mobile-sub">Mission & Vision</a>
-      <a href="licences.html" class="mobile-sub">Licenses & Documents</a>
-      <a href="gallery.html" class="mobile-sub">Gallery</a>
-    </div>
-  </div>
-  <div class="mobile-nav-item">Service
-    <div style="margin-top:8px;">
-      <a href="for-applicants.html" class="mobile-sub">For Applicants</a>
-      <a href="for-clients.html" class="mobile-sub" style="color:var(--white);">For Clients</a>
-      <a href="job-categories.html" class="mobile-sub">Job Categories</a>
-    </div>
-  </div>
-  <a href="our-success.html" class="mobile-nav-item">Our Success</a>
-  <a href="clients.html" class="mobile-nav-item">Our Clients</a>
-  <a href="contact.html" class="mobile-nav-item">Contact</a>
-  <a href="apply.html" class="mobile-apply-btn">Apply Now</a>
-</div>
-
-<header id="mainHeader">
-  <div class="header-inner">
-    <a href="index.html" class="logo"><div class="logo-icon">🌍</div><span style="color:var(--green);margin-left:4px;">Najifa</span></a>
-    <nav>
-      <div class="nav-item has-dropdown">Company
+<!-- ===== HEADER ===== -->
+<header id="mainHeader" class="site-header">
+  <div class="container nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 21V11L8 7M8 7L13 11M8 7V3L13 7M13 11V21M13 11L18 7L21 11M21 11V21M3 21H21M7 17H9M15 17H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="logo-text">Your Company</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-item has-dropdown">
+        <span>Company</span>
         <div class="dropdown">
-          <a href="about.html">About Us</a>
+          <a href="about.html">About</a>
+          <a href="ceo-message.html">CEO Message</a>
           <a href="management.html">Management</a>
-          <a href="ceo-message.html">Message from CEO</a>
-          <a href="mission-vision.html">Mission & Vision</a>
-          <a href="licences.html">Licenses & Documents</a>
+          <a href="mission-vision.html">Mission &amp; Vision</a>
+          <a href="licences.html">Certifications</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <span>Services</span>
+        <div class="dropdown">
+          <a href="for-clients.html" style="background:var(--green-light);color:var(--green-primary);">For Clients</a>
+          <a href="for-applicants.html">For Applicants</a>
+          <a href="job-categories.html">Job Categories</a>
           <a href="gallery.html">Gallery</a>
         </div>
       </div>
-      <div class="nav-item has-dropdown">Service
-        <div class="dropdown">
-          <a href="for-applicants.html">For Applicants</a>
-          <a href="for-clients.html" style="color:var(--white); background:var(--green-glow);">For Clients</a>
-          <a href="job-categories.html">Job Categories</a>
-        </div>
-      </div>
-      <a href="our-success.html" class="nav-item">Our Success</a>
-      <a href="clients.html" class="nav-item">Our Clients</a>
+      <a href="our-success.html" class="nav-item">Success Stories</a>
+      <a href="clients.html" class="nav-item">Clients</a>
       <a href="contact.html" class="nav-item">Contact</a>
-      <a href="apply.html" class="nav-item nav-apply">Apply Now</a>
+      <a href="apply.html" class="btn-primary nav-cta">Apply Now</a>
     </nav>
-    <div class="hamburger" onclick="openMobileMenu()"><span></span><span></span><span></span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
+<!-- ===== PAGE HEADER ===== -->
 <section class="page-header">
   <div class="container">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a> <span>/</span> Service <span>/</span> For Clients
+    <div class="breadcrumb" style="font-size:14px;font-weight:500;color:var(--green-primary);margin-bottom:16px;letter-spacing:1px;text-transform:uppercase;">
+      <a href="index.html" style="color:var(--text-muted);transition:var(--transition);">Home</a>
+      <span style="margin:0 8px;color:var(--border-subtle);">/</span>
+      Service
+      <span style="margin:0 8px;color:var(--border-subtle);">/</span>
+      For Clients
     </div>
-    <h1 class="page-title">Hire Skilled Workers from Bangladesh</h1>
-    <p class="page-sub">Trusted by 25+ global employers across the Middle East and Southeast Asia.</p>
+    <h1>Hire Skilled Workers <span>for Your Business</span></h1>
+    <p>Trusted by global employers across the Middle East and Southeast Asia. Your Company Name Here delivers pre-screened, work-ready talent.</p>
   </div>
 </section>
 
+<!-- ===== CLIENT PROCESS SECTION ===== -->
 <section id="client-process">
   <div class="container">
-    <div style="text-align:center;" class="reveal">
+    <div style="text-align:center;" class="reveal" data-fade>
       <span class="section-tag">Recruitment Flow</span>
       <h2 class="section-title">How We Serve <span>Our Clients</span></h2>
       <p class="section-sub">A streamlined, transparent process to fulfill your manpower needs quickly.</p>
     </div>
 
     <div class="process-grid">
-      
-      <div class="process-card reveal">
+
+      <div class="process-card reveal" data-fade>
         <div class="pc-num">1</div>
         <h3 class="pc-title">Send Demand Letter</h3>
-        <p class="pc-desc">The employer issues a formal Demand Letter & Power of Attorney detailing the job categories, salary, and requirements.</p>
+        <p class="pc-desc">The employer issues a formal Demand Letter &amp; Power of Attorney detailing the job categories, salary, and requirements.</p>
       </div>
 
-      <div class="process-card reveal">
+      <div class="process-card reveal" data-fade>
         <div class="pc-num">2</div>
         <h3 class="pc-title">We Shortlist Candidates</h3>
         <p class="pc-desc">We advertise, source, and meticulously pre-screen candidates from our extensive database based on your criteria.</p>
       </div>
 
-      <div class="process-card reveal">
+      <div class="process-card reveal" data-fade>
         <div class="pc-num">3</div>
         <h3 class="pc-title">Trade Test / Interview</h3>
-        <p class="pc-desc">Shortlisted candidates undergo practical trade tests at our centers, followed by final interviews with the employer via Zoom or in-person.</p>
+        <p class="pc-desc">Shortlisted candidates undergo practical trade tests at our centers, followed by final interviews with the employer via video call or in-person.</p>
       </div>
 
-      <div class="process-card reveal">
+      <div class="process-card reveal" data-fade>
         <div class="pc-num">4</div>
         <h3 class="pc-title">Medical Clearance</h3>
-        <p class="pc-desc">Selected candidates complete mandatory health checkups through GAMCA or authorized medical centers.</p>
+        <p class="pc-desc">Selected candidates complete mandatory health checkups through authorized medical centers to meet destination country requirements.</p>
       </div>
 
-      <div class="process-card col-span-2 reveal">
+      <div class="process-card col-span-2 reveal" data-fade>
         <div class="pc-num">5</div>
         <h3 class="pc-title">Visa Processing</h3>
-        <p class="pc-desc">The employer provides the visa authorization. We manage all local documentation, embassy stamping, and BMET emigration clearance in Bangladesh.</p>
+        <p class="pc-desc">The employer provides the visa authorization. We manage all local documentation, embassy stamping, and emigration clearance on your behalf.</p>
       </div>
 
-      <div class="process-card reveal">
+      <div class="process-card reveal" data-fade>
         <div class="pc-num">6</div>
         <h3 class="pc-title">Pre-departure Orientation</h3>
         <p class="pc-desc">Workers attend mandatory briefing sessions to understand your country's laws, workplace ethics, and cultural norms.</p>
       </div>
 
-      <div class="process-card reveal">
+      <div class="process-card reveal" data-fade>
         <div class="pc-num">7</div>
         <h3 class="pc-title">Deployment</h3>
         <p class="pc-desc">Flight itineraries are shared with you. Workers are safely deployed to your site ready to commence their duties.</p>
@@ -427,32 +680,34 @@
   </div>
 </section>
 
+<!-- ===== WHY HIRE FROM US ===== -->
 <section id="why-hire">
   <div class="container">
-    <div style="text-align:center;" class="reveal">
+    <div style="text-align:center;" class="reveal" data-fade>
       <span class="section-tag">Our Value Proposition</span>
-      <h2 class="section-title">Why Hire From <span>Najifa International?</span></h2>
+      <h2 class="section-title">Why Hire From <span>Your Company Name Here?</span></h2>
+      <p class="section-sub">We go beyond placement — we deliver results-ready talent with full compliance and ongoing support.</p>
     </div>
 
     <div class="wh-grid">
-      
-      <div class="wh-item reveal">
+
+      <div class="wh-item reveal" data-fade>
         <div class="wh-icon">🏛️</div>
         <div class="wh-text">
-          <h4>Govt. Certified & Licensed</h4>
-          <p>We operate strictly under the regulations of the Bureau of Manpower, Employment and Training (BMET) in Bangladesh.</p>
+          <h4>Govt. Certified &amp; Licensed</h4>
+          <p>We operate strictly under the regulations of recognized manpower authorities, ensuring full legal compliance for every placement.</p>
         </div>
       </div>
 
-      <div class="wh-item reveal">
+      <div class="wh-item reveal" data-fade>
         <div class="wh-icon">🛠️</div>
         <div class="wh-text">
           <h4>Pre-screened, Trained Workers</h4>
-          <p>Our 5 dedicated training centers ensure you get workers who are technically sound and physically fit for the job.</p>
+          <p>Our dedicated training centers ensure you receive workers who are technically sound, physically fit, and job-ready from day one.</p>
         </div>
       </div>
 
-      <div class="wh-item reveal">
+      <div class="wh-item reveal" data-fade>
         <div class="wh-icon">⚡</div>
         <div class="wh-text">
           <h4>Fast Processing Time</h4>
@@ -460,27 +715,27 @@
         </div>
       </div>
 
-      <div class="wh-item reveal">
+      <div class="wh-item reveal" data-fade>
         <div class="wh-icon">👤</div>
         <div class="wh-text">
           <h4>Dedicated Account Manager</h4>
-          <p>You receive a single point of contact who understands your company's unique needs and provides real-time updates.</p>
+          <p>You receive a single point of contact who understands your company's unique needs and provides real-time updates throughout the process.</p>
         </div>
       </div>
 
-      <div class="wh-item reveal">
+      <div class="wh-item reveal" data-fade>
         <div class="wh-icon">🤝</div>
         <div class="wh-text">
           <h4>Post-deployment Support</h4>
-          <p>Our responsibility doesn't end at the airport. We assist with any transition issues to ensure worker retention and satisfaction.</p>
+          <p>Our responsibility doesn't end at the airport. We assist with any transition issues to ensure worker retention and long-term satisfaction.</p>
         </div>
       </div>
 
-      <div class="wh-item reveal">
+      <div class="wh-item reveal" data-fade>
         <div class="wh-icon">🌍</div>
         <div class="wh-text">
-          <h4>12+ Years Industry Expertise</h4>
-          <p>Leveraging our deep connections and sister concern (Dallas Overseas), we can source large volumes of manpower swiftly.</p>
+          <h4>Established Industry Expertise</h4>
+          <p>Leveraging our deep connections and industry network, we can source large volumes of skilled manpower swiftly and reliably.</p>
         </div>
       </div>
 
@@ -488,115 +743,104 @@
   </div>
 </section>
 
+<!-- ===== CLIENTS MARQUEE ===== -->
 <section id="clients-marquee">
   <div class="container">
-    <div class="reveal">
-      <h2 class="section-title">Join companies like...</h2>
-      <p class="section-sub">Who trust Najifa International for their manpower solutions.</p>
+    <div class="reveal" data-fade style="text-align:center;">
+      <span class="section-tag">Trusted By</span>
+      <h2 class="section-title">Join companies who trust <span>Your Company Name Here</span></h2>
+      <p class="section-sub">Industry leaders rely on us for their manpower solutions — across hospitality, logistics, construction, and more.</p>
     </div>
   </div>
-  
+
   <div class="marquee-track">
-    <div class="client-logo-item">Al Baik</div>
-    <div class="client-logo-item">Al Marai</div>
-    <div class="client-logo-item">Noon.com</div>
-    <div class="client-logo-item">Aramco</div>
-    <div class="client-logo-item">Amazon KSA</div>
-    <div class="client-logo-item">Carrefour</div>
-    <div class="client-logo-item">NEOM City</div>
-    <div class="client-logo-item">Nadec</div>
-    <div class="client-logo-item">Panda Market</div>
-    <div class="client-logo-item">Nahdi Pharmacy</div>
-    <div class="client-logo-item">Kudu Restaurant</div>
-    <div class="client-logo-item">Herfy Restaurant</div>
-    <div class="client-logo-item">Al Baik</div>
-    <div class="client-logo-item">Al Marai</div>
+    <div class="client-logo-item">Global Employer A</div>
+    <div class="client-logo-item">Global Employer B</div>
+    <div class="client-logo-item">Global Employer C</div>
+    <div class="client-logo-item">Global Employer D</div>
+    <div class="client-logo-item">Global Employer E</div>
+    <div class="client-logo-item">Global Employer F</div>
+    <div class="client-logo-item">Global Employer G</div>
+    <div class="client-logo-item">Global Employer H</div>
+    <div class="client-logo-item">Global Employer I</div>
+    <div class="client-logo-item">Global Employer J</div>
+    <div class="client-logo-item">Global Employer K</div>
+    <div class="client-logo-item">Global Employer L</div>
+    <div class="client-logo-item">Global Employer A</div>
+    <div class="client-logo-item">Global Employer B</div>
   </div>
 </section>
 
+<!-- ===== EMPLOYER CTA ===== -->
 <section id="employer-cta">
   <div class="container">
-    <h2>Are you an employer looking for <span>workers?</span></h2>
+    <h2>Are you an employer looking for <span>skilled workers?</span></h2>
     <p>Share your manpower requirements with us, and our B2B account team will get back to you with a tailored proposal within 24 hours.</p>
     <div class="employer-cta-btns">
       <a href="contact.html" class="btn-primary" style="font-size:16px; padding:15px 36px;">✉️ Send Your Requirements</a>
-      <a href="#" class="btn-outline" style="font-size:16px; padding:15px 36px; color:#fff; border-color:var(--card-border);">↓ Download Company Profile</a>
+      <a href="#" class="btn-outline" style="font-size:16px; padding:15px 36px;">↓ Download Company Profile</a>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-accent"></div>
   <div class="container">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo"><div class="footer-logo-icon">🌍</div>Najifa International</div>
-        <p class="footer-tagline">"Skilled Hands. Global Jobs."</p>
-        <div class="footer-newsletter">
-          <input type="email" placeholder="Your email address"/>
-          <button>Subscribe</button>
+        <a href="index.html" class="logo">
+          <span class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 21V11L8 7M8 7L13 11M8 7V3L13 7M13 11V21M13 11L18 7L21 11M21 11V21M3 21H21M7 17H9M15 17H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">Your Company</span>
+        </a>
+        <p class="footer-tagline">Your tagline here — a premium business solution helping companies and people connect across borders.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8a8.5 8.5 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.4 8.4 0 0 1-2.6 1A4.2 4.2 0 0 0 11.5 9 11.9 11.9 0 0 1 3 4.5a4.2 4.2 0 0 0 1.3 5.6 4 4 0 0 1-1.9-.5v.1a4.2 4.2 0 0 0 3.4 4.1 4.2 4.2 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.4 8.4 0 0 1 2 18.4 11.9 11.9 0 0 0 8.5 20c7.7 0 11.9-6.4 11.9-11.9v-.5A8.5 8.5 0 0 0 22 5.8z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
         </div>
-        <div class="footer-socials">
-          <a href="#" class="footer-social">f</a>
-          <a href="#" class="footer-social">in</a>
-          <a href="#" class="footer-social">▶</a>
-          <a href="#" class="footer-social">Li</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Info</h4>
-        <div class="footer-contact-item"><span class="fc-icon">📞</span><span>+880 1798-682867</span></div>
-        <div class="footer-contact-item"><span class="fc-icon">✉</span><span>contact@najifa.com</span></div>
-        <div class="footer-contact-item"><span class="fc-icon">💬</span><span>WhatsApp: +880 1798-682867</span></div>
-        <div class="footer-contact-item"><span class="fc-icon">🕐</span><span>Mon–Fri: 9:00–20:00<br>Sat: 11:00–15:00</span></div>
-        <div class="footer-contact-item"><span class="fc-icon">📍</span><span>Block-D, Road-11, House-70, 3rd Floor, Banani, Dhaka 1213</span></div>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="management.html">Management</a></li>
-          <li><a href="ceo-message.html">Message from CEO</a></li>
-          <li><a href="mission-vision.html">Mission &amp; Vision</a></li>
-          <li><a href="our-success.html">Our Success</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
+        <a href="about.html">About</a>
+        <a href="ceo-message.html">CEO Message</a>
+        <a href="management.html">Management</a>
+        <a href="mission-vision.html">Mission &amp; Vision</a>
+        <a href="licences.html">Certifications</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <ul>
-          <li><a href="for-applicants.html">For Applicants</a></li>
-          <li><a href="for-clients.html" style="color:var(--green);">For Clients</a></li>
-          <li><a href="job-categories.html">Job Categories</a></li>
-          <li><a href="licences.html">Licenses &amp; Docs</a></li>
-          <li><a href="clients.html">Our Clients</a></li>
-          <li><a href="apply.html">Apply Now</a></li>
-        </ul>
+        <a href="for-clients.html" style="color:var(--green-primary);">For Clients</a>
+        <a href="for-applicants.html">For Applicants</a>
+        <a href="job-categories.html">Job Categories</a>
+        <a href="our-success.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:your@email.com">your@email.com</a>
+        <a href="tel:+8801XXXXXXXXX">+880 1XXX-XXXXXX</a>
+        <p class="footer-address">Your Address Here<br>City, Country</p>
+        <a href="contact.html" class="btn-outline" style="margin-top:12px;color:var(--text-on-dark);border-color:var(--text-muted-dark);">Get in Touch</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2012 Najifa International. All rights reserved.</span>
-      <span>Sister concern: <strong>Dallas Overseas</strong></span>
+      <span>&copy; <span id="footYear">2026</span> Your Company Name Here. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>
 
+<!-- ===== JAVASCRIPT ===== -->
 <script>
-  // Header scroll effect
-  const header = document.getElementById('mainHeader');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 30);
-  });
-
-  // Mobile menu
-  function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
   // Reveal Animations
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -606,17 +850,20 @@
       }
     });
   }, { threshold: 0.1 });
-  
+
   document.querySelectorAll('.reveal').forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    
-    // reset delay index for large grids to keep animation fast
-    let delayIndex = index % 4; 
+    let delayIndex = index % 4;
     el.style.transition = `opacity 0.6s ease ${delayIndex * 0.1}s, transform 0.6s ease ${delayIndex * 0.1}s`;
-    
     revealObs.observe(el);
   });
+</script>
+<script>
+  (function () { var t = document.getElementById('navToggle'); var n = document.getElementById('mainNav'); if (t && n) t.addEventListener('click', function () { n.classList.toggle('open'); }); })();
+  (function () { if (!('IntersectionObserver' in window)) return; var obs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('animate-fade-up'); obs.unobserve(e.target); } }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }); document.querySelectorAll('[data-fade]').forEach(function (el) { obs.observe(el); }); })();
+  (function () { var y = document.getElementById('footYear'); if (y) y.textContent = new Date().getFullYear(); })();
+  (function () { var h = document.getElementById('mainHeader'); if (!h) return; function update() { h.style.boxShadow = window.scrollY > 8 ? '0 4px 20px rgba(40,55,57,0.06)' : 'none'; } window.addEventListener('scroll', update, { passive: true }); update(); })();
 </script>
 </body>
 </html>
