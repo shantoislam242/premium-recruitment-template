@@ -808,114 +808,32 @@
     .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
 
     /* ===== FOOTER ===== */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid var(--card-border);
-      padding: 60px 0 0;
+    .site-footer { position: relative; background: var(--black-main); color: var(--text-muted-dark); padding: 80px 0 32px; }
+    .footer-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--green-primary), var(--green-dark)); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand .logo { display: inline-block; margin-bottom: 16px; }
+    .footer-tagline { font-size: 15px; line-height: 1.7; color: var(--text-muted-dark); margin-bottom: 20px; max-width: 360px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 40px; height: 40px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--black-accent); color: var(--text-muted-dark);
+      border-radius: 50%; transition: var(--transition);
     }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid var(--card-border);
-    }
-    .footer-brand { }
-    .footer-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .footer-logo-icon {
-      width: 34px; height: 34px;
-      background: var(--green);
-      border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .footer-tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-    .footer-newsletter { display: flex; gap: 8px; margin-bottom: 24px; }
-    .footer-newsletter input {
-      flex: 1;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      color: var(--text);
-      outline: none;
-      transition: var(--transition);
-    }
-    .footer-newsletter input::placeholder { color: var(--text-muted); }
-    .footer-newsletter input:focus { border-color: var(--green); }
-    .footer-newsletter button {
-      background: var(--green);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 10px 16px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    .footer-newsletter button:hover { background: var(--green-dark); }
-    .footer-socials { display: flex; gap: 8px; }
-    .footer-social {
-      width: 36px; height: 36px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      cursor: pointer;
-      transition: var(--transition);
-      color: var(--text-muted);
-    }
-    .footer-social:hover { background: var(--green); border-color: var(--green); color: #fff; }
+    .footer-social a:hover { background: var(--green-primary); color: var(--text-on-dark); transform: translateY(-2px); }
 
-    .footer-col h4 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--white);
-      margin-bottom: 18px;
-      letter-spacing: 0.5px;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a {
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-    .footer-col ul li a:hover { color: var(--green); padding-left: 4px; }
+    .footer-col h4 { color: var(--text-on-dark); font-size: 16px; font-weight: 700; margin-bottom: 18px; }
+    .footer-col a { display: block; color: var(--text-muted-dark); font-size: 14px; margin-bottom: 10px; transition: var(--transition); }
+    .footer-col a:hover { color: var(--green-primary); }
+    .footer-address { color: var(--text-muted-dark); font-size: 14px; line-height: 1.7; margin-top: 4px; }
 
-    .footer-contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 12px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .footer-contact-item svg, .fc-icon { flex-shrink: 0; margin-top: 2px; color: var(--green); font-size: 15px; }
+    .footer-bottom { padding-top: 28px; border-top: 1px solid var(--black-accent); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { color: var(--text-muted-dark); transition: var(--transition); }
+    .footer-legal a:hover { color: var(--green-primary); }
 
-    .footer-bottom {
-      padding: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    @media (max-width: 1023px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media (max-width: 640px)  { .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
 
     /* ===== FLOATING WHATSAPP ===== */
     .float-wa {
@@ -957,7 +875,6 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-top { grid-template-columns: 1fr 1fr; }
       .testimonial-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
@@ -971,7 +888,6 @@
       .cta-banner-content { padding: 40px 28px; flex-direction: column; }
       .gallery-slide { width: calc(80% - 12px); }
       .testimonial-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
       .trust-item { padding: 8px 14px; font-size: 12px; }
     }
     @media (max-width: 640px) {
@@ -1536,78 +1452,52 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer>
+<footer class="site-footer">
+  <div class="footer-accent"></div>
   <div class="container">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">
-          <div class="footer-logo-icon"><!-- IMAGE: footer logo -->🌍</div>
-          Najifa International
-        </div>
-        <p class="footer-tagline">"Skilled Hands. Global Jobs."</p>
-        <div class="footer-newsletter">
-          <input type="email" placeholder="Your email address"/>
-          <button>Subscribe</button>
-        </div>
-        <div class="footer-socials">
-          <a href="#" class="footer-social" aria-label="Facebook">f</a>
-          <a href="#" class="footer-social" aria-label="Instagram">in</a>
-          <a href="#" class="footer-social" aria-label="YouTube">▶</a>
-          <a href="#" class="footer-social" aria-label="LinkedIn">Li</a>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">Your</span><span class="logo-text" style="color:var(--text-on-dark);">Logo</span>
+        </a>
+        <p class="footer-tagline">Your tagline here — a premium business solution helping companies and people connect across borders.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8a8.5 8.5 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.4 8.4 0 0 1-2.6 1A4.2 4.2 0 0 0 11.5 9 11.9 11.9 0 0 1 3 4.5a4.2 4.2 0 0 0 1.3 5.6 4 4 0 0 1-1.9-.5v.1a4.2 4.2 0 0 0 3.4 4.1 4.2 4.2 0 0 1-1.9.1 4.2 4.2 0 0 0 3.9 2.9A8.4 8.4 0 0 1 2 18.4 11.9 11.9 0 0 0 8.5 20c7.7 0 11.9-6.4 11.9-11.9v-.5A8.5 8.5 0 0 0 22 5.8z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4>Contact Info</h4>
-        <div class="footer-contact-item">
-          <span class="fc-icon">📞</span>
-          <span>+880 1798-682867</span>
-        </div>
-        <div class="footer-contact-item">
-          <span class="fc-icon">✉</span>
-          <span>contact@najifa.com</span>
-        </div>
-        <div class="footer-contact-item">
-          <span class="fc-icon">💬</span>
-          <span>WhatsApp: +880 1798-682867</span>
-        </div>
-        <div class="footer-contact-item">
-          <span class="fc-icon">🕐</span>
-          <span>Mon–Fri: 9:00–20:00<br>Sat: 11:00–15:00</span>
-        </div>
-        <div class="footer-contact-item">
-          <span class="fc-icon">📍</span>
-          <span>Block-D, Road-11, House-70, 3rd Floor, Banani, Dhaka 1213</span>
-        </div>
-      </div>
-
       <div class="footer-col">
         <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="management.html">Management</a></li>
-          <li><a href="ceo-message.html">Message from CEO</a></li>
-          <li><a href="mission-vision.html">Mission &amp; Vision</a></li>
-          <li><a href="our-success.html">Our Success</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
+        <a href="about.html">About</a>
+        <a href="ceo-message.html">CEO Message</a>
+        <a href="management.html">Management</a>
+        <a href="mission-vision.html">Mission &amp; Vision</a>
+        <a href="licences.html">Certifications</a>
       </div>
-
       <div class="footer-col">
         <h4>Services</h4>
-        <ul>
-          <li><a href="for-applicants.html">For Applicants</a></li>
-          <li><a href="for-clients.html">For Clients</a></li>
-          <li><a href="job-categories.html">Job Categories</a></li>
-          <li><a href="licences.html">Licenses &amp; Docs</a></li>
-          <li><a href="clients.html">Our Clients</a></li>
-          <li><a href="apply.html">Apply Now</a></li>
-        </ul>
+        <a href="for-clients.html">For Clients</a>
+        <a href="for-applicants.html">For Applicants</a>
+        <a href="job-categories.html">Job Categories</a>
+        <a href="our-success.html">Success Stories</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:your@email.com">your@email.com</a>
+        <a href="tel:+8801XXXXXXXXX">+880 1XXX-XXXXXX</a>
+        <p class="footer-address">Your Address Here<br>City, Country</p>
+        <a href="contact.html" class="btn-outline" style="margin-top:12px;color:var(--text-on-dark);border-color:var(--text-muted-dark);">Get in Touch</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2012 Najifa International. All rights reserved.</span>
-      <span>Sister concern: <strong>Dallas Overseas</strong></span>
+      <span>© <span id="footYear">2026</span> Your Company Name Here. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>
