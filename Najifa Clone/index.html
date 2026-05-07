@@ -983,6 +983,75 @@
       .stats-grid { grid-template-columns: 1fr 1fr; }
       #cta-banner { margin: 0 0 72px; border-radius: 0; }
     }
+
+    /* === Light-theme overrides for content sections === */
+
+    /* Card-like blocks: any element previously dark gets white surface */
+    .why-card, .step-card, .success-card, .testimonial-card, .faq-item {
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+    .why-card:hover, .step-card:hover, .success-card:hover, .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--green-light);
+    }
+
+    /* Card body text */
+    .why-card p, .step-card p, .success-card p, .testimonial-text { color: var(--text-secondary); }
+
+    /* Section backgrounds — alternate white-pure ↔ white-soft */
+    #why-choose, #how-it-works, #clients-marquee, #success-preview { background: var(--white-pure); }
+    #stats-bar, #faq { background: var(--white-soft); }
+
+    /* Stats bar (was dark, now subtle white-soft band) */
+    #stats-bar .stat-item { background: var(--white-pure); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 28px 20px; text-align: center; box-shadow: var(--shadow-soft); }
+    #stats-bar .stat-item h3, #stats-bar .stat-num { color: var(--green-primary); font-weight: 800; font-size: clamp(28px, 3vw, 40px); }
+    #stats-bar .stat-item p, #stats-bar .stat-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-size: 13px; font-weight: 500; }
+
+    /* Why-choose icon tile */
+    .why-icon { width: 56px; height: 56px; border-radius: var(--radius-sm); background: var(--green-light); color: var(--green-primary); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .why-icon svg { width: 28px; height: 28px; }
+    .why-card h3 { color: var(--text-main); font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+
+    /* How-it-works step number */
+    .step-number { background: var(--green-primary); color: var(--text-on-dark); width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 16px; }
+    .step-card h3 { color: var(--text-main); font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+
+    /* Clients marquee — make logos appear as muted gray badges */
+    .client-item { background: var(--white-soft); color: var(--text-secondary); border: 1px solid var(--border-subtle); padding: 16px 24px; border-radius: var(--radius-sm); font-weight: 600; }
+
+    /* FAQ */
+    .faq-item { padding: 20px 24px; margin-bottom: 12px; cursor: pointer; }
+    .faq-question { color: var(--text-main); font-weight: 600; font-size: 17px; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { color: var(--text-secondary); margin-top: 12px; line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-toggle { color: var(--green-primary); font-size: 22px; font-weight: 700; }
+
+    /* Testimonials */
+    .testimonial-card { padding: 32px 28px; }
+    .testimonial-text { font-style: italic; font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+    .testimonial-text::before { content: '\201C'; display: block; font-family: Georgia, serif; font-size: 48px; color: var(--green-primary); line-height: 0.6; margin-bottom: 12px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--green-light); color: var(--green-primary); display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+    .testimonial-name { color: var(--text-main); font-weight: 600; font-size: 15px; }
+    .testimonial-role { color: var(--text-muted); font-size: 13px; }
+
+    /* CTA banner — green band */
+    .cta-banner { background: var(--green-primary); color: var(--text-on-dark); padding: var(--space-2xl) 0; position: relative; overflow: hidden; }
+    .cta-banner-overlay { display: none; }
+    .cta-banner-content { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .cta-banner-text h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.2; color: var(--text-on-dark); }
+    .cta-banner-text p { font-size: 16px; color: var(--text-muted-dark); margin-top: 8px; }
+    .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cta-banner .btn-primary { background: var(--white-pure); color: var(--green-primary); }
+    .cta-banner .btn-primary:hover { background: var(--white-soft); transform: translateY(-2px); }
+    .cta-banner .btn-outline { color: var(--text-on-dark); border-color: rgba(255,255,255,0.4); }
+    .cta-banner .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--text-on-dark); color: var(--text-on-dark); }
   </style>
 </head>
 <body>
