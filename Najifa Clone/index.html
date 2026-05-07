@@ -317,18 +317,21 @@
 
     .nav-toggle { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
     .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); border-radius: 2px; transition: var(--transition); }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     @media (max-width: 1023px) {
       .main-nav {
         position: fixed;
-        top: 72px; left: 0; bottom: 0; width: min(320px, 85vw); z-index: 99;
+        top: 72px; right: 0; bottom: 0; left: auto; width: min(320px, 85vw); z-index: 99;
         background: #ffffff;
-        box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+        box-shadow: -4px 0 24px rgba(0,0,0,0.12);
         flex-direction: column;
         align-items: flex-start;
         padding: 32px 24px;
         gap: 20px;
-        transform: translateX(-100%);
+        transform: translateX(100%);
         transition: var(--transition);
         overflow-y: auto;
       }
@@ -2098,7 +2101,7 @@
   (function () {
     var t = document.getElementById('navToggle');
     var n = document.getElementById('mainNav');
-    if (t && n) t.addEventListener('click', function () { n.classList.toggle('open'); });
+    if (t && n) t.addEventListener('click', function () { n.classList.toggle('open'); t.classList.toggle('open'); });
 
     document.querySelectorAll('.main-nav .has-dropdown > span:first-child').forEach(function (h) {
       h.addEventListener('click', function (e) {
