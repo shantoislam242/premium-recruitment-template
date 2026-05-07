@@ -702,10 +702,10 @@
     #faq { padding: 96px 0; }
     .faq-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.15fr 1fr;
       gap: 48px;
       margin-top: 48px;
-      align-items: start;
+      align-items: center;
     }
     .faq-list { }
     .faq-item {
@@ -813,17 +813,38 @@
       border-radius: var(--radius);
       overflow: hidden;
       aspect-ratio: 4/3;
-      background: var(--dark3);
-      border: 1px solid var(--card-border);
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
       position: relative;
-      /* IMAGE: success photo — workers abroad */
+      transition: var(--transition);
     }
-    .gallery-slide-placeholder {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 8px; color: var(--text-muted); font-size: 13px;
+    .gallery-slide:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(40, 90, 72, 0.14); }
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .gallery-slide:hover img { transform: scale(1.06); }
+    .gallery-slide-caption {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 6px 18px rgba(40, 55, 57, 0.12);
+    }
+    .gallery-slide-caption span { color: var(--text-main); font-weight: 700; font-size: 13px; }
+    .gallery-slide-caption small { color: var(--green-primary); font-weight: 600; font-size: 11px; letter-spacing: 0.5px; }
+    .gallery-slide-placeholder { display: none; }
     .gallery-nav {
       display: flex;
       align-items: center;
@@ -844,7 +865,7 @@
     .gallery-btn:hover { background: var(--green); border-color: var(--green); color: #fff; }
 
     /* ===== TESTIMONIALS ===== */
-    #testimonials { padding: 0 0 96px; }
+    #testimonials { padding: var(--space-2xl) 0; }
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1545,24 +1566,24 @@
     <div class="gallery-slider">
       <div class="gallery-track" id="galleryTrack">
         <div class="gallery-slide">
-          <!-- IMAGE: success-photo-1 — worker at job site abroad -->
-          <div class="gallery-slide-placeholder">📸 Success Photo 1</div>
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Construction worker on site abroad" loading="lazy"/>
+          <div class="gallery-slide-caption"><span>Construction</span><small>Saudi Arabia</small></div>
         </div>
         <div class="gallery-slide">
-          <!-- IMAGE: success-photo-2 — worker with employer abroad -->
-          <div class="gallery-slide-placeholder">📸 Success Photo 2</div>
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=800&q=80" alt="Skilled welder at industrial workplace" loading="lazy"/>
+          <div class="gallery-slide-caption"><span>Skilled Trade</span><small>UAE</small></div>
         </div>
         <div class="gallery-slide">
-          <!-- IMAGE: success-photo-3 — worker at work in Saudi Arabia -->
-          <div class="gallery-slide-placeholder">📸 Success Photo 3</div>
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Engineer with safety gear at job site" loading="lazy"/>
+          <div class="gallery-slide-caption"><span>Engineering</span><small>Qatar</small></div>
         </div>
         <div class="gallery-slide">
-          <!-- IMAGE: success-photo-4 — group of workers abroad -->
-          <div class="gallery-slide-placeholder">📸 Success Photo 4</div>
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80" alt="Hospitality worker in professional uniform" loading="lazy"/>
+          <div class="gallery-slide-caption"><span>Hospitality</span><small>Oman</small></div>
         </div>
         <div class="gallery-slide">
-          <!-- IMAGE: success-photo-5 — worker at job site UAE -->
-          <div class="gallery-slide-placeholder">📸 Success Photo 5</div>
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Team of professionals celebrating success abroad" loading="lazy"/>
+          <div class="gallery-slide-caption"><span>Team Success</span><small>Kuwait</small></div>
         </div>
       </div>
     </div>
