@@ -693,6 +693,20 @@
         width: 100% !important;
       }
     }
+
+    /* ===== MOBILE MENU: bulletproof hide-when-closed ===== */
+    @media (max-width: 1023px) {
+      .main-nav {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      .main-nav.open {
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
