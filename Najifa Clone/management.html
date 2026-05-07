@@ -562,6 +562,87 @@
     @media (max-width: 576px) {
       .team-grid { grid-template-columns: 1fr; }
     }
+
+    /* ===== MOBILE OPTIMIZATIONS (added retroactively) ===== */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      section { padding: 64px 0; }
+
+      /* Hero */
+      .hero-content { grid-template-columns: 1fr !important; gap: 48px !important; }
+      .hero-title { font-size: clamp(28px, 7vw, 44px) !important; }
+      .hero-photo-grid { max-width: 100% !important; grid-template-rows: 200px 200px !important; }
+      .hero-stats { gap: 24px !important; }
+
+      /* CEO card: relative below photos so it doesn't overflow */
+      .hero-ceo-card { position: relative !important; left: auto !important; right: auto !important; bottom: auto !important; margin: 20px auto 0 !important; max-width: 100% !important; }
+
+      /* FAQ grid stacks */
+      .faq-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+      /* Footer stacks */
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      section { padding: 56px 0; }
+
+      /* Hero compact */
+      #hero { padding: 32px 0 64px !important; }
+      .hero-title { font-size: clamp(26px, 9vw, 36px) !important; line-height: 1.1 !important; }
+      .hero-sub { font-size: 15px !important; max-width: 100% !important; }
+      .hero-ctas { flex-direction: column !important; align-items: stretch !important; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-outline { width: 100%; justify-content: center; }
+      .hero-stats { grid-template-columns: 1fr !important; gap: 14px !important; padding: 20px !important; }
+
+      /* Photo grid stacks fully */
+      .hero-photo-grid { grid-template-columns: 1fr !important; grid-template-rows: 200px 200px 200px !important; gap: 12px !important; }
+      .hero-photo-tall { grid-row: span 1 !important; }
+
+      /* CEO card full width */
+      .hero-ceo-card { padding: 12px 14px !important; }
+
+      /* Section titles */
+      .section-title { font-size: clamp(22px, 7vw, 30px) !important; }
+      .section-sub { font-size: 14px !important; }
+
+      /* Cards tighter */
+      .why-card, .step-card, .success-card, .testimonial-card, .faq-item, .card,
+      .info-block, .doc-card, .team-card, .profile-card, .cred-card,
+      .mv-card, .cv-card, .c-card { padding: 22px 18px !important; }
+
+      /* Page banner */
+      .page-banner, .page-header, .page-hero, .about-hero { padding: 56px 0 40px !important; }
+      .page-banner h1, .page-hero h1, .page-header h1 { font-size: clamp(26px, 8vw, 36px) !important; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      .footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; text-align: left !important; }
+
+      /* Stats bar grid */
+      .stats-grid, #stats-bar .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+
+      /* Section header centered tighter */
+      .section-header { text-align: center; padding: 0 8px; }
+
+      /* CTA banner content stacks */
+      #cta-banner .cta-banner-content, .cta-banner-content { flex-direction: column !important; text-align: center !important; padding: 56px 20px !important; }
+      .cta-banner-text { width: 100%; }
+    }
+
+    /* Very narrow phones */
+    @media (max-width: 400px) {
+      .container { padding: 0 14px; }
+      .nav-container { height: 64px !important; }
+      .main-nav { inset: 64px 0 0 0 !important; }
+      .logo-text { font-size: 15px !important; }
+      .logo-icon { width: 32px !important; height: 32px !important; }
+      .logo-icon svg { width: 18px !important; height: 18px !important; }
+      .hero-title { font-size: clamp(22px, 9vw, 30px) !important; }
+      .hero-stat-num { font-size: 24px !important; }
+      .stats-grid, #stats-bar .stats-grid { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
