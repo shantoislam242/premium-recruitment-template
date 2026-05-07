@@ -24,9 +24,9 @@
       --black-deeper:  #161F21;
 
       /* === TEXT === */
-      --text-main:       #283739;
-      --text-secondary:  #4A5C5E;
-      --text-muted:      #8A9B94;
+      --text-main:       #1B252A;       /* darkest for headings — max contrast */
+      --text-secondary:  #3A4D4F;       /* body text — readable dark gray on light */
+      --text-muted:      #6B7E80;       /* meta/captions — still readable */
       --text-on-dark:    #FFFFFF;       /* pure white for max contrast on dark headings */
       --text-soft-white: #EAEFEF;       /* user-specified white shade — used for surfaces / softer text */
       --text-muted-dark: #A8B5B7;
@@ -64,7 +64,7 @@
       --dark2: var(--white-pure);
       --dark3: var(--green-light);
       --text: var(--text-main);
-      --white: var(--white-pure);
+      --white: var(--text-main);            /* legacy 'white text' rules now render as dark text on light surfaces */
       --card-bg: var(--white-pure);
       --card-border: var(--border-subtle);
       --shadow: 0 8px 32px rgba(40, 55, 57, 0.08);
@@ -590,7 +590,7 @@
       background: linear-gradient(135deg, var(--dark2), var(--dark3));
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
-      padding: 60px 0;
+      padding: var(--space-2xl) 0;
     }
     .stats-grid {
       display: grid;
@@ -672,7 +672,7 @@
     .step-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
     /* ===== CLIENTS MARQUEE ===== */
-    #clients-marquee { padding: 72px 0; overflow: hidden; }
+    #clients-marquee { padding: var(--space-2xl) 0; overflow: hidden; }
     .marquee-track {
       display: flex;
       gap: 32px;
@@ -696,7 +696,7 @@
       white-space: nowrap;
       /* IMAGE: client logo — replace text with actual logo image */
     }
-    .client-logo-item:hover { border-color: var(--green); color: var(--white); }
+    .client-logo-item:hover { border-color: var(--green); color: var(--green-primary); background: var(--green-light); }
 
     /* ===== FAQ ===== */
     #faq { padding: 96px 0; }
@@ -728,7 +728,7 @@
       gap: 12px;
       transition: var(--transition);
     }
-    .faq-question:hover { color: var(--white); }
+    .faq-question:hover { color: var(--green-primary); }
     .faq-arrow {
       width: 28px; height: 28px;
       background: var(--card-bg);
@@ -799,7 +799,7 @@
     .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
     /* ===== SUCCESS GALLERY (HOME SLIDER) ===== */
-    #success-preview { padding: 0 0 96px; }
+    #success-preview { padding: var(--space-2xl) 0; }
     .gallery-slider { position: relative; overflow: hidden; }
     .gallery-track {
       display: flex;
@@ -1039,7 +1039,7 @@
     #faq { background: var(--white-soft); }
 
     /* Stats bar — green-tinted "premium" band */
-    #stats-bar { padding: 64px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+    #stats-bar { padding: var(--space-2xl) 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
     #stats-bar .stat-item { background: transparent; padding: 16px 12px; text-align: center; }
     #stats-bar .stat-item h3, #stats-bar .stat-num { color: var(--green-primary); font-weight: 800; font-size: clamp(28px, 3vw, 42px); line-height: 1; }
     #stats-bar .stat-item p, #stats-bar .stat-label { color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1.2px; font-size: 12px; font-weight: 500; margin-top: 8px; }
@@ -1072,18 +1072,27 @@
     .testimonial-name { color: var(--text-main); font-weight: 600; font-size: 15px; }
     .testimonial-role { color: var(--text-muted); font-size: 13px; }
 
-    /* CTA banner — premium dark green contrast block */
-    .cta-banner { background: linear-gradient(135deg, var(--green-primary) 0%, #1B3F32 100%); color: var(--text-on-dark); padding: 80px 0; position: relative; overflow: hidden; }
-    .cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(91, 170, 140, 0.25), transparent 60%); pointer-events: none; }
-    .cta-banner-overlay { display: none; }
-    .cta-banner-content { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-    .cta-banner-text h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.25; color: var(--text-on-dark); }
-    .cta-banner-text p { font-size: 16px; color: rgba(255,255,255,0.85); margin-top: 10px; }
-    .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .cta-banner .btn-primary { background: var(--text-on-dark); color: var(--green-primary); }
-    .cta-banner .btn-primary:hover { background: var(--white-soft); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(40, 55, 57, 0.20); }
-    .cta-banner .btn-outline { color: var(--text-on-dark); border-color: rgba(255,255,255,0.5); }
-    .cta-banner .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--text-on-dark); color: var(--text-on-dark); }
+    /* CTA banner — premium dark green contrast block (#cta-banner = ID selector to override earlier rule) */
+    #cta-banner {
+      margin: 0;
+      border-radius: 0;
+      background: linear-gradient(135deg, var(--green-primary) 0%, #1B3F32 100%);
+      color: var(--text-on-dark);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      border: none;
+    }
+    #cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(91, 170, 140, 0.25), transparent 60%); pointer-events: none; }
+    #cta-banner .cta-banner-overlay { display: none; }
+    #cta-banner .cta-banner-content { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 80px 24px; position: relative; z-index: 1; }
+    #cta-banner .cta-banner-text h2 { font-family: 'Open Sans', sans-serif; font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.25; color: var(--text-on-dark); margin-bottom: 10px; }
+    #cta-banner .cta-banner-text p { font-size: 16px; color: rgba(255,255,255,0.88); margin-top: 8px; max-width: 600px; }
+    #cta-banner .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    #cta-banner .btn-primary { background: var(--text-on-dark); color: var(--green-primary); }
+    #cta-banner .btn-primary:hover { background: var(--white-soft); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(40, 55, 57, 0.20); }
+    #cta-banner .btn-outline { color: var(--text-on-dark); border-color: rgba(255,255,255,0.5); }
+    #cta-banner .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--text-on-dark); color: var(--text-on-dark); }
 
     /* Trust bar (between hero and content) — light premium feel */
     #trust-bar { background: var(--white-pure); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
