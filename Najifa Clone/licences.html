@@ -771,6 +771,90 @@
       .hero-stat-num { font-size: clamp(26px, 8vw, 34px) !important; }
       .hero-stat-label { font-size: 10px !important; letter-spacing: 0.8px !important; }
     }
+
+    /* ===== MOBILE MENU: section-heading structure + pill CTA ===== */
+    @media (max-width: 1023px) {
+      .main-nav {
+        padding: 0 !important;
+        gap: 0 !important;
+      }
+
+      /* Dropdown parents become section blocks with bottom border */
+      .main-nav .nav-item.has-dropdown {
+        width: 100% !important;
+        padding: 24px 28px !important;
+        border-bottom: 1px solid var(--border-subtle) !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+      .main-nav .nav-item.has-dropdown::after { display: none !important; }
+
+      /* Section heading: "Company" / "Service" — bold dark, non-clickable */
+      .main-nav .nav-item.has-dropdown > span:first-child {
+        display: block !important;
+        padding: 0 0 14px !important;
+        font-size: 19px !important;
+        font-weight: 700 !important;
+        color: var(--text-main) !important;
+        cursor: default !important;
+      }
+
+      /* Dropdown items list: indented green links, vertical stack */
+      .main-nav .has-dropdown .dropdown {
+        background: transparent !important;
+        padding: 0 0 0 16px !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+      }
+      .main-nav .has-dropdown .dropdown a {
+        padding: 4px 0 !important;
+        color: var(--green-primary) !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        background: transparent !important;
+      }
+      .main-nav .has-dropdown .dropdown a:hover {
+        background: transparent !important;
+        color: var(--green-dark) !important;
+      }
+
+      /* Direct nav-items: bold standalone links with bottom border */
+      .main-nav > a.nav-item {
+        width: 100% !important;
+        padding: 22px 28px !important;
+        border-bottom: 1px solid var(--border-subtle) !important;
+        color: var(--text-main) !important;
+        font-size: 19px !important;
+        font-weight: 700 !important;
+        display: block !important;
+      }
+      .main-nav > a.nav-item:hover { color: var(--green-primary) !important; }
+      .main-nav > a.nav-item::after { display: none !important; }
+
+      /* Apply Now CTA — big pill at bottom */
+      .main-nav .nav-cta {
+        margin: 24px 28px 32px !important;
+        width: calc(100% - 56px) !important;
+        padding: 18px 24px !important;
+        border-radius: 999px !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        justify-content: center !important;
+        border-bottom: none !important;
+        background: var(--green-primary) !important;
+        color: var(--text-on-dark) !important;
+      }
+      .main-nav .nav-cta:hover { background: var(--green-dark) !important; }
+    }
   </style>
 </head>
 <body>
@@ -795,26 +879,26 @@
       <div class="nav-item has-dropdown">
         <span>Company</span>
         <div class="dropdown">
-          <a href="about.html">About</a>
-          <a href="ceo-message.html">CEO Message</a>
+          <a href="about.html">About Us</a>
           <a href="management.html">Management</a>
+          <a href="ceo-message.html">Message from CEO</a>
           <a href="mission-vision.html">Mission &amp; Vision</a>
-          <a href="licences.html">Certifications</a>
-        </div>
-      </div>
-      <div class="nav-item has-dropdown">
-        <span>Services</span>
-        <div class="dropdown">
-          <a href="for-clients.html">For Clients</a>
-          <a href="for-applicants.html">For Applicants</a>
-          <a href="job-categories.html">Job Categories</a>
+          <a href="licences.html">Licenses &amp; Documents</a>
           <a href="gallery.html">Gallery</a>
         </div>
       </div>
-      <a href="our-success.html" class="nav-item">Success Stories</a>
-      <a href="clients.html" class="nav-item">Clients</a>
+      <div class="nav-item has-dropdown">
+        <span>Service</span>
+        <div class="dropdown">
+          <a href="for-applicants.html">For Applicants</a>
+          <a href="for-clients.html">For Clients</a>
+          <a href="job-categories.html">Job Categories</a>
+        </div>
+      </div>
+      <a href="our-success.html" class="nav-item">Our Success</a>
+      <a href="clients.html" class="nav-item">Our Clients</a>
       <a href="contact.html" class="nav-item">Contact</a>
-      <a href="apply.html" class="btn-primary nav-cta">Apply Now</a>
+      <a href="apply.html" class="btn-primary nav-cta">Apply Now — Start Your Journey</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -1044,14 +1128,14 @@
         <a href="ceo-message.html">CEO Message</a>
         <a href="management.html">Management</a>
         <a href="mission-vision.html">Mission &amp; Vision</a>
-        <a href="licences.html">Certifications</a>
+        <a href="licences.html">Licenses &amp; Documents</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <a href="for-clients.html">For Clients</a>
         <a href="for-applicants.html">For Applicants</a>
         <a href="job-categories.html">Job Categories</a>
-        <a href="our-success.html">Success Stories</a>
+        <a href="our-success.html">Our Success</a>
         <a href="gallery.html">Gallery</a>
       </div>
       <div class="footer-col">
