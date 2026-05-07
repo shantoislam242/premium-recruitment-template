@@ -645,6 +645,48 @@
       .hero-stat-num { font-size: 24px !important; }
       .stats-grid, #stats-bar .stats-grid { grid-template-columns: 1fr !important; }
     }
+
+    /* ===== MOBILE: CENTER HERO CONTENT (fix for narrow-column appearance) ===== */
+    @media (max-width: 1023px) {
+      .hero-left {
+        text-align: center !important;
+        align-items: center !important;
+      }
+      .hero-badge { margin: 0 auto 24px !important; }
+      .hero-sub { margin: 0 auto 32px !important; max-width: 540px !important; }
+      .hero-ctas { justify-content: center !important; }
+      .hero-stats {
+        width: 100% !important;
+        max-width: 540px !important;
+        margin: 0 auto !important;
+      }
+      .hero-stat-item { text-align: center !important; }
+      .hero-photo-grid {
+        width: 100% !important;
+        max-width: 540px !important;
+        margin: 0 auto !important;
+      }
+      .hero-ceo-card {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        max-width: 90% !important;
+        width: max-content !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-ceo-card {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        margin: 24px auto 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+    }
   </style>
 </head>
 <body>
