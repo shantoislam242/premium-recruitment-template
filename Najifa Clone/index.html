@@ -27,8 +27,9 @@
       --text-main:       #283739;
       --text-secondary:  #4A5C5E;
       --text-muted:      #8A9B94;
-      --text-on-dark:    #EAEFEF;   /* shade of white per user spec */
-      --text-muted-dark: #9BA8A8;
+      --text-on-dark:    #FFFFFF;       /* pure white for max contrast on dark headings */
+      --text-soft-white: #EAEFEF;       /* user-specified white shade — used for surfaces / softer text */
+      --text-muted-dark: #A8B5B7;
 
       /* === BORDERS === */
       --border-light:  rgba(40, 90, 72, 0.18);
@@ -74,12 +75,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
-      background-color: var(--black-main);
-      background-image:
-        linear-gradient(rgba(91, 170, 140, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(91, 170, 140, 0.05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      background-attachment: fixed;
+      background: var(--black-main);
       color: var(--text-on-dark);
       font-size: 16px;
       font-weight: 400;
@@ -346,7 +342,11 @@
     /* ===== HERO (DARK, 2-COLUMN, RESTORED STRUCTURE) ===== */
     #hero {
       position: relative;
-      background: transparent;
+      background-color: var(--black-main);
+      background-image:
+        linear-gradient(rgba(91, 170, 140, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91, 170, 140, 0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
       padding: 80px 0 100px;
       overflow: hidden;
     }
@@ -1041,10 +1041,10 @@
     .why-card p, .step-card p, .success-card p, .testimonial-text,
     .why-card .why-desc, .step-card .step-desc { color: var(--text-muted-dark); }
 
-    /* Section backgrounds — transparent so global body grid shows; subtle rgba overlays for alternation */
+    /* Section backgrounds — solid dark (no grid), subtle alternation between primary and accent dark */
     #why-choose, #how-it-works, #clients-marquee, #success-preview,
-    section#testimonials { background: transparent; }
-    #stats-bar, #faq { background: rgba(31, 44, 46, 0.6); backdrop-filter: blur(2px); }
+    section#testimonials { background: var(--black-main); }
+    #stats-bar, #faq { background: var(--black-accent); }
 
     /* Stats bar */
     #stats-bar { padding: 64px 0; border-top: 1px solid rgba(40, 90, 72, 0.18); border-bottom: 1px solid rgba(40, 90, 72, 0.18); }
