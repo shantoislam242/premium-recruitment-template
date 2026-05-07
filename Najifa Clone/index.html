@@ -1115,38 +1115,6 @@
   <span class="float-wa-tooltip">Chat on WhatsApp</span>
 </a>
 
-<!-- ===== MOBILE MENU ===== -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-header">
-    <div class="logo">
-      <div class="logo-icon">🌍</div>
-      <span>Najifa <span>Int'l</span></span>
-    </div>
-    <div class="mobile-close" onclick="closeMobileMenu()">✕</div>
-  </div>
-  <div class="mobile-nav-item">Company
-    <div style="margin-top:8px;">
-      <a href="about.html" class="mobile-sub">About Us</a>
-      <a href="management.html" class="mobile-sub">Management</a>
-      <a href="ceo-message.html" class="mobile-sub">Message from CEO</a>
-      <a href="mission-vision.html" class="mobile-sub">Mission & Vision</a>
-      <a href="licences.html" class="mobile-sub">Licenses & Documents</a>
-      <a href="gallery.html" class="mobile-sub">Gallery</a>
-    </div>
-  </div>
-  <div class="mobile-nav-item">Service
-    <div style="margin-top:8px;">
-      <a href="for-applicants.html" class="mobile-sub">For Applicants</a>
-      <a href="for-clients.html" class="mobile-sub">For Clients</a>
-      <a href="job-categories.html" class="mobile-sub">Job Categories</a>
-    </div>
-  </div>
-  <a href="our-success.html" class="mobile-nav-item">Our Success</a>
-  <a href="clients.html" class="mobile-nav-item">Our Clients</a>
-  <a href="contact.html" class="mobile-nav-item">Contact</a>
-  <a href="apply.html" class="mobile-apply-btn">Apply Now — Start Your Journey</a>
-</div>
-
 <!-- ===== HEADER ===== -->
 <header id="mainHeader" class="site-header">
   <div class="container nav-container">
@@ -1732,16 +1700,6 @@
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 30);
   });
-
-  // Mobile menu
-  function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.body.style.overflow = '';
-  }
 
   // FAQ accordion
   function toggleFaq(el) {
