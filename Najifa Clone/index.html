@@ -8,22 +8,61 @@
   <style>
     /* ===== CSS VARIABLES ===== */
     :root {
-      --green: #1d9e75;
-      --green-dark: #157a5a;
-      --green-light: #e8f7f2;
-      --green-glow: rgba(29,158,117,0.18);
-      --dark: #0b1a14;
-      --dark2: #112318;
-      --dark3: #1a3028;
-      --text: #e8f0ec;
-      --text-muted: #8aab9a;
-      --white: #ffffff;
-      --card-bg: rgba(255,255,255,0.04);
-      --card-border: rgba(29,158,117,0.18);
-      --radius: 14px;
+      /* === BRAND GREENS === */
+      --green-primary: #155E45;
+      --green-dark:    #0D402F;
+      --green-light:   #E8F5F1;
+
+      /* === SURFACES === */
+      --white-pure:    #FFFFFF;
+      --white-soft:    #F8FAF9;
+      --black-main:    #0B120F;
+      --black-accent:  #1E2924;
+
+      /* === TEXT === */
+      --text-main:       #0B120F;
+      --text-secondary:  #4A5852;
+      --text-muted:      #8A9B94;
+      --text-on-dark:    #FFFFFF;
+      --text-muted-dark: #B8C5C0;
+
+      /* === BORDERS === */
+      --border-light:  rgba(21, 94, 69, 0.15);
+      --border-subtle: rgba(11, 18, 15, 0.08);
+
+      /* === ELEVATION === */
+      --shadow-soft: 0 4px 20px rgba(11, 18, 15, 0.06);
+      --shadow-md:   0 8px 32px rgba(11, 18, 15, 0.08);
+      --shadow-lg:   0 16px 48px rgba(21, 94, 69, 0.12);
+
+      /* === MOTION === */
+      --transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* === RADIUS === */
       --radius-sm: 8px;
-      --shadow: 0 8px 32px rgba(0,0,0,0.35);
-      --transition: all 0.32s cubic-bezier(0.4,0,0.2,1);
+      --radius:    14px;
+      --radius-lg: 24px;
+
+      /* === SPACING (8px base grid) === */
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  24px;
+      --space-lg:  40px;
+      --space-xl:  64px;
+      --space-2xl: 96px;
+      --space-3xl: 128px;
+
+      /* === LEGACY ALIASES (back-compat with old class names — keep until full audit) === */
+      --green: var(--green-primary);
+      --green-glow: rgba(21, 94, 69, 0.10);
+      --dark: var(--white-pure);
+      --dark2: var(--white-soft);
+      --dark3: var(--white-soft);
+      --text: var(--text-main);
+      --white: var(--white-pure);
+      --card-bg: var(--white-pure);
+      --card-border: var(--border-subtle);
+      --shadow: var(--shadow-md);
     }
 
     /* ===== RESET ===== */
