@@ -1276,6 +1276,78 @@
         pointer-events: auto !important;
       }
     }
+
+    /* ===== MOBILE: LEFT-ALIGNED STRUCTURE (matches original Najifa mobile layout) ===== */
+    @media (max-width: 1023px) {
+      .hero-left {
+        text-align: left !important;
+        align-items: flex-start !important;
+      }
+      .hero-badge { margin: 0 0 24px !important; width: max-content !important; }
+      .hero-title { text-align: left !important; }
+      .hero-sub { margin: 0 0 32px !important; max-width: 100% !important; text-align: left !important; }
+      .hero-ctas {
+        justify-content: flex-start !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        width: 100% !important;
+      }
+      .hero-ctas .btn-primary, .hero-ctas .btn-outline {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      /* Stats: 3-column horizontal row (matches original) */
+      .hero-stats {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 16px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .hero-stat-item {
+        text-align: left !important;
+        align-items: flex-start !important;
+      }
+      .hero-stat-num {
+        font-size: clamp(28px, 7vw, 36px) !important;
+        font-weight: 800 !important;
+      }
+      .hero-stat-label {
+        font-size: 11px !important;
+        margin-top: 4px !important;
+      }
+
+      /* Photo grid: still stacked vertically, but full-width left-aligned */
+      .hero-photo-grid {
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+
+      /* CEO card: left-aligned full-width */
+      .hero-ceo-card {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        margin: 20px 0 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+      .hero-stat-num { font-size: clamp(26px, 8vw, 34px) !important; }
+      .hero-stat-label { font-size: 10px !important; letter-spacing: 0.8px !important; }
+    }
   </style>
 </head>
 <body>
