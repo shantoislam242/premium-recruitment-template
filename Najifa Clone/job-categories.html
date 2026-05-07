@@ -778,6 +778,56 @@
       .hero-stat-label { font-size: 10px !important; letter-spacing: 0.8px !important; }
     }
 
+    /* ===== MOBILE HERO: match reference (text-only, hide photos) ===== */
+    @media (max-width: 1023px) {
+      /* Hide photo grid + CEO card — reference uses a text-only hero */
+      .hero-right { display: none !important; }
+
+      /* Tighten hero padding so above-the-fold content fits */
+      #hero { padding: 32px 0 56px !important; }
+
+      /* Big 4-line headline */
+      .hero-title {
+        font-size: clamp(40px, 11vw, 56px) !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.02em !important;
+        margin-bottom: 20px !important;
+      }
+
+      /* Readable description */
+      .hero-sub {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 28px !important;
+      }
+
+      /* CTAs: stacked full-width */
+      .hero-ctas .btn-primary, .hero-ctas .btn-outline {
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        border-radius: 8px !important;
+      }
+
+      /* Stats below CTAs: 3-col, green numbers, uppercase labels */
+      .hero-stats {
+        margin-top: 32px !important;
+        gap: 16px !important;
+      }
+      .hero-stat-num {
+        font-size: clamp(28px, 8vw, 36px) !important;
+        font-weight: 800 !important;
+        color: var(--green-primary) !important;
+        line-height: 1 !important;
+      }
+      .hero-stat-label {
+        font-size: 11px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.8px !important;
+        margin-top: 6px !important;
+      }
+    }
+
     /* ===== MOBILE MENU: drawer + collapsible dropdowns ===== */
     @media (max-width: 1023px) {
       .main-nav {
