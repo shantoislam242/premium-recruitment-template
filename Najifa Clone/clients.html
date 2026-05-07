@@ -773,12 +773,17 @@
         margin-bottom: 28px !important;
       }
 
-      /* CTAs: stacked full-width */
+      /* CTAs: stacked, left-aligned, fit-content (smaller, prettier) */
+      .hero-ctas {
+        align-items: flex-start !important;
+      }
       .hero-ctas .btn-primary, .hero-ctas .btn-outline {
-        padding: 14px 24px !important;
-        font-size: 15px !important;
+        width: auto !important;
+        padding: 11px 20px !important;
+        font-size: 14px !important;
         font-weight: 600 !important;
         border-radius: 8px !important;
+        justify-content: flex-start !important;
       }
 
       /* Stats below CTAs: 3-col, green numbers, uppercase labels */
