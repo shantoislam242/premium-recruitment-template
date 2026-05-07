@@ -225,153 +225,93 @@
     }
     .animate-fade-up { animation: fadeUp 0.6s ease-out both; }
 
-    /* ===== HEADER ===== */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 0 24px;
+    /* ===== NAVBAR ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
       transition: var(--transition);
     }
-    header.scrolled {
-      background: rgba(11,26,20,0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--card-border);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      color: var(--white);
-    }
-    .logo-icon {
-      width: 38px; height: 38px;
-      background: var(--green);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-    }
-    .logo span { color: var(--green); }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 
-    nav { display: flex; align-items: center; gap: 6px; }
-    .nav-item {
+    .logo { font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; display: inline-block; }
+    .logo-mark { color: var(--green-primary); }
+    .logo-text { color: var(--text-main); }
+
+    .main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav .nav-item {
       position: relative;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
-      color: var(--text-muted);
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
+      color: var(--text-main);
       cursor: pointer;
+      padding: 8px 0;
       transition: var(--transition);
-      white-space: nowrap;
     }
-    .nav-item:hover { color: var(--white); background: var(--card-bg); }
-    .nav-item.has-dropdown::after { content: ' ▾'; font-size: 10px; }
-
-    .dropdown {
-      display: none;
+    .main-nav .nav-item:hover { color: var(--green-primary); }
+    .main-nav .nav-item::after {
+      content: '';
       position: absolute;
-      top: calc(100% + 8px);
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-primary);
+      transition: width 0.3s;
+    }
+    .main-nav .nav-item:hover::after { width: 100%; }
+    .main-nav .nav-cta::after { display: none; }
+    .main-nav .nav-cta { color: var(--text-on-dark); padding: 12px 22px; font-size: 14px; }
+
+    .has-dropdown .dropdown {
+      position: absolute;
+      top: 100%;
       left: 0;
       min-width: 220px;
-      background: var(--dark2);
-      border: 1px solid var(--card-border);
+      background: var(--white-pure);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius);
-      padding: 8px;
-      box-shadow: var(--shadow);
-      z-index: 100;
+      box-shadow: var(--shadow-md);
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: var(--transition);
     }
-    .nav-item:hover .dropdown { display: block; animation: fadeDown 0.2s ease; }
-    @keyframes fadeDown { from { opacity:0; transform:translateY(-8px);} to { opacity:1; transform:translateY(0);} }
-    .dropdown a {
+    .has-dropdown:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .has-dropdown .dropdown a {
       display: block;
       padding: 10px 14px;
+      border-radius: var(--radius-sm);
       font-size: 14px;
-      color: var(--text-muted);
-      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
       transition: var(--transition);
     }
-    .dropdown a:hover { color: var(--white); background: var(--green-glow); }
+    .has-dropdown .dropdown a:hover { background: var(--green-light); color: var(--green-primary); }
 
-    .nav-apply {
-      background: var(--green);
-      color: #fff !important;
-      padding: 9px 18px;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      font-size: 14px;
-      transition: var(--transition);
-      margin-left: 6px;
-    }
-    .nav-apply:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(29,158,117,0.4); }
+    .nav-toggle { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-main); border-radius: 2px; transition: var(--transition); }
 
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--dark);
-      z-index: 999;
-      flex-direction: column;
-      padding: 24px;
-      overflow-y: auto;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 32px;
-    }
-    .mobile-close {
-      width: 40px; height: 40px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 20px; color: var(--text);
-    }
-    .mobile-nav-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--card-border);
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--text);
-      cursor: pointer;
-    }
-    .mobile-sub { padding: 8px 16px; color: var(--text-muted); font-size: 14px; display: block; }
-    .mobile-apply-btn {
-      margin-top: 24px;
-      background: var(--green);
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      font-size: 16px;
+    @media (max-width: 1023px) {
+      .main-nav {
+        position: fixed;
+        inset: 72px 0 0 0;
+        background: var(--white-pure);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 24px;
+        gap: 20px;
+        transform: translateX(100%);
+        transition: var(--transition);
+        overflow-y: auto;
+      }
+      .main-nav.open { transform: translateX(0); }
+      .nav-toggle { display: flex; }
+      .has-dropdown .dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; padding: 0 0 0 16px; border: none; }
     }
 
     /* ===== HERO ===== */
@@ -1145,8 +1085,6 @@
       .testimonial-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      nav { display: none; }
-      .hamburger { display: flex; }
       .why-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid .stat-item:nth-child(2)::before,
@@ -1210,38 +1148,39 @@
 </div>
 
 <!-- ===== HEADER ===== -->
-<header id="mainHeader">
-  <div class="header-inner">
+<header id="mainHeader" class="site-header">
+  <div class="container nav-container">
     <a href="index.html" class="logo">
-      <div class="logo-icon">🌍</div>
-      <span style="color:var(--green);margin-left:4px;">Najifa</span>
+      <span class="logo-mark">Your</span><span class="logo-text">Logo</span>
     </a>
-    <nav>
-      <div class="nav-item has-dropdown">Company
+    <nav class="main-nav" id="mainNav">
+      <div class="nav-item has-dropdown">
+        <span>Company</span>
         <div class="dropdown">
-          <a href="about.html">About Us</a>
+          <a href="about.html">About</a>
+          <a href="ceo-message.html">CEO Message</a>
           <a href="management.html">Management</a>
-          <a href="ceo-message.html">Message from CEO</a>
-          <a href="mission-vision.html">Mission & Vision</a>
-          <a href="licences.html">Licenses & Documents</a>
+          <a href="mission-vision.html">Mission &amp; Vision</a>
+          <a href="licences.html">Certifications</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <span>Services</span>
+        <div class="dropdown">
+          <a href="for-clients.html">For Clients</a>
+          <a href="for-applicants.html">For Applicants</a>
+          <a href="job-categories.html">Job Categories</a>
           <a href="gallery.html">Gallery</a>
         </div>
       </div>
-      <div class="nav-item has-dropdown">Service
-        <div class="dropdown">
-          <a href="for-applicants.html">For Applicants</a>
-          <a href="for-clients.html">For Clients</a>
-          <a href="job-categories.html">Job Categories</a>
-        </div>
-      </div>
-      <a href="our-success.html" class="nav-item">Our Success</a>
-      <a href="clients.html" class="nav-item">Our Clients</a>
+      <a href="our-success.html" class="nav-item">Success Stories</a>
+      <a href="clients.html" class="nav-item">Clients</a>
       <a href="contact.html" class="nav-item">Contact</a>
-      <a href="apply.html" class="nav-item nav-apply">Apply Now</a>
+      <a href="apply.html" class="btn-primary nav-cta">Apply Now</a>
     </nav>
-    <div class="hamburger" onclick="openMobileMenu()" aria-label="Menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </header>
 
