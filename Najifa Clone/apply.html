@@ -250,6 +250,8 @@
     .main-nav .nav-item:hover::after { width: 100%; }
     .main-nav .nav-cta::after { display: none; }
     .main-nav .nav-cta { color: var(--text-on-dark) !important; padding: 11px 22px; font-size: 14px; }
+    .nav-cta-extra { display: none; }
+    @media (max-width: 1023px) { .nav-cta-extra { display: inline; } }
 
     .has-dropdown .dropdown {
       position: absolute;
@@ -916,7 +918,7 @@
       <a href="our-success.html" class="nav-item">Our Success</a>
       <a href="clients.html" class="nav-item">Our Clients</a>
       <a href="contact.html" class="nav-item">Contact</a>
-      <a href="apply.html" class="btn-primary nav-cta">Apply Now — Start Your Journey</a>
+      <a href="apply.html" class="btn-primary nav-cta">Apply Now<span class="nav-cta-extra"> — Start Your Journey</span></a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
