@@ -260,7 +260,7 @@
     @media (max-width: 1023px) {
       .main-nav {
         position: fixed;
-        inset: 72px 0 0 0;
+        top: 72px; left: 0; right: 0; bottom: 0; width: 100%; z-index: 99;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
@@ -536,7 +536,7 @@
     @media (max-width: 400px) {
       .container { padding: 0 14px; }
       .nav-container { height: 64px !important; }
-      .main-nav { inset: 64px 0 0 0 !important; }
+      .main-nav { top: 64px; left: 0; right: 0; bottom: 0; width: 100%; z-index: 99 !important; }
       .logo-text { font-size: 15px !important; }
       .logo-icon { width: 32px !important; height: 32px !important; }
       .logo-icon svg { width: 18px !important; height: 18px !important; }
