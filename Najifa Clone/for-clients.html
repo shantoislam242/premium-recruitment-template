@@ -372,7 +372,7 @@
     .site-footer .btn-outline:hover { color: var(--text-on-dark) !important; background: rgba(255, 255, 255, 0.10) !important; border-color: var(--text-on-dark) !important; transform: translateY(-2px); }
 
     @media (max-width: 1023px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
-    @media (max-width: 640px)  { .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 640px)  { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; } .footer-grid > .footer-brand { grid-column: 1 / -1; } .footer-grid > .footer-col:last-child { grid-column: 1 / -1; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
 
     /* ===== FLOATING WHATSAPP ===== */
     .float-wa {
@@ -622,8 +622,10 @@
       .page-banner, .page-header, .page-hero, .about-hero { padding: 56px 0 40px !important; }
       .page-banner h1, .page-hero h1, .page-header h1 { font-size: clamp(26px, 8vw, 36px) !important; }
 
-      /* Footer */
-      .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      /* Footer: Brand spans full width, Company|Services side-by-side, Contact full width */
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 28px 20px !important; }
+      .footer-grid > .footer-brand { grid-column: 1 / -1 !important; }
+      .footer-grid > .footer-col:last-child { grid-column: 1 / -1 !important; }
       .footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; text-align: left !important; }
 
       /* Stats bar grid */
