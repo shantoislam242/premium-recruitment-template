@@ -106,7 +106,7 @@
         </div>
         <div class="hero-stats">
           <div class="hero-stat-item">
-            <div class="hero-stat-num"><span class="counter" data-target="10">0</span><span>+</span></div>
+            <div class="hero-stat-num"><span class="counter" data-target="25">0</span><span>+</span></div>
             <div class="hero-stat-label">Global Clients</div>
           </div>
           <div class="hero-stat-item">
@@ -114,7 +114,7 @@
             <div class="hero-stat-label">Countries</div>
           </div>
           <div class="hero-stat-item">
-            <div class="hero-stat-num"><span class="counter" data-target="10">0</span><span>+</span></div>
+            <div class="hero-stat-num"><span class="counter" data-target="12">0</span><span>+</span></div>
             <div class="hero-stat-label">Years Experience</div>
           </div>
         </div>
@@ -607,9 +607,10 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Counter animation
-  function animateCounters() {
-    document.querySelectorAll('.counter').forEach(el => {
+  // Counter animation — scoped to a root element, idempotent via data-animated
+  function animateCounters(root) {
+    (root || document).querySelectorAll('.counter:not([data-animated])').forEach(el => {
+      el.setAttribute('data-animated', 'true');
       const target = parseInt(el.dataset.target);
       const duration = 1800;
       const step = target / (duration / 16);
@@ -622,12 +623,19 @@
     });
   }
 
-  // Intersection observer for counters
+  // Observe both the hero stats (visible on load) and the #stats-bar
+  // section (visible after scroll). Each section's counters animate
+  // exactly once, when that section first enters the viewport.
   const statsObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { animateCounters(); statsObs.disconnect(); }
+      if (entry.isIntersecting) {
+        animateCounters(entry.target);
+        statsObs.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObs.observe(heroStats);
   const statsEl = document.getElementById('stats-bar');
   if (statsEl) statsObs.observe(statsEl);
 
