@@ -565,16 +565,45 @@
   var lbLoc = document.getElementById('lb-loc');
 
   var lbImage = document.getElementById('lb-image');
+  var galleryItems = [];
+  var currentIndex = 0;
 
-  function openLightbox(title, loc) {
-    var clicked = (typeof event !== 'undefined' && event.currentTarget) ? event.currentTarget : null;
-    var img = clicked ? clicked.querySelector('img') : null;
-    if (img && lbImage) {
+  function rebuildGalleryItems() {
+    galleryItems = Array.prototype.slice.call(document.querySelectorAll('#country-gallery .gallery-item'))
+      .filter(function (el) { return !el.classList.contains('hide'); });
+  }
+
+  function applyItemToLightbox(idx) {
+    if (!galleryItems.length) return;
+    if (idx < 0) idx = galleryItems.length - 1;
+    if (idx >= galleryItems.length) idx = 0;
+    currentIndex = idx;
+    var item = galleryItems[idx];
+    var img = item.querySelector('img');
+    var caption = item.querySelector('.gallery-caption');
+    var locEl = caption ? caption.querySelector('.gallery-location') : null;
+    var loc = locEl ? locEl.textContent.trim() : '';
+    var title = '';
+    if (caption) {
+      caption.childNodes.forEach(function (n) {
+        if (n.nodeType === 3) title += n.textContent;
+      });
+      title = title.trim();
+    }
+    if (lbImage && img) {
       lbImage.src = img.src;
       lbImage.alt = title;
     }
-    lbTitle.textContent = title;
+    lbTitle.textContent = title + (loc ? ', ' + loc : '');
     lbLoc.textContent = loc;
+  }
+
+  function openLightbox(title, loc) {
+    rebuildGalleryItems();
+    var clicked = (typeof event !== 'undefined' && event.currentTarget) ? event.currentTarget : null;
+    var idx = clicked ? galleryItems.indexOf(clicked) : 0;
+    if (idx < 0) idx = 0;
+    applyItemToLightbox(idx);
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -584,8 +613,16 @@
     document.body.style.overflow = '';
   }
 
-  function prevImg() { lbTitle.textContent = 'Previous Image Loaded'; }
-  function nextImg() { lbTitle.textContent = 'Next Image Loaded'; }
+  function prevImg() { applyItemToLightbox(currentIndex - 1); }
+  function nextImg() { applyItemToLightbox(currentIndex + 1); }
+
+  // Keyboard nav: arrow keys + Escape
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  prevImg();
+    if (e.key === 'ArrowRight') nextImg();
+    if (e.key === 'Escape')     closeLightbox();
+  });
 
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) { closeLightbox(); }
